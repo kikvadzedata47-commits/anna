@@ -1,0 +1,1010 @@
+<!doctype html>
+<html lang="ka">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ანას სამი თვე</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Noto+Serif+Georgian:wght@600;700&display=swap">
+<style>
+:root{
+  --paper:#FAF8F4;
+  --surface:#FFFFFF;
+  --surface-2:#F3EFE8;
+  --ink:#22262F;
+  --ink-2:#5A5F6B;
+  --ink-3:#8B8F99;
+  --line:#E2DCD1;
+  --line-2:#CFC7B8;
+  --hist:#9A5B32;
+  --geo:#3D6B58;
+  --eng:#43618C;
+  --done:#4E8C57;
+  --done-bg:#EAF3EA;
+  --warn:#B5842B;
+  --accent:#9A5B32;
+  --shadow:0 1px 2px rgba(34,38,47,.06),0 8px 24px -16px rgba(34,38,47,.28);
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#14161B;
+    --surface:#1C1F26;
+    --surface-2:#242832;
+    --ink:#E9E5DD;
+    --ink-2:#A8ACB6;
+    --ink-3:#787D88;
+    --line:#2D323C;
+    --line-2:#3C424F;
+    --hist:#D08A56;
+    --geo:#6FA98E;
+    --eng:#7D9ECD;
+    --done:#7FBB86;
+    --done-bg:#1E2A20;
+    --warn:#D8AC5B;
+    --accent:#D08A56;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -16px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14161B;
+  --surface:#1C1F26;
+  --surface-2:#242832;
+  --ink:#E9E5DD;
+  --ink-2:#A8ACB6;
+  --ink-3:#787D88;
+  --line:#2D323C;
+  --line-2:#3C424F;
+  --hist:#D08A56;
+  --geo:#6FA98E;
+  --eng:#7D9ECD;
+  --done:#7FBB86;
+  --done-bg:#1E2A20;
+  --warn:#D8AC5B;
+  --accent:#D08A56;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -16px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Noto Sans Georgian",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:"Noto Serif Georgian","Noto Sans Georgian",Georgia,serif;text-wrap:balance;margin:0}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+
+/* masthead */
+.mast{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;
+  border-bottom:1px solid var(--line);padding-bottom:20px}
+.mast h1{font-size:30px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+.mast p{margin:6px 0 0;color:var(--ink-2);font-size:14px;max-width:52ch}
+.countdown{text-align:right;flex:0 0 auto}
+.countdown .n{font-family:"Noto Serif Georgian",Georgia,serif;font-size:34px;font-weight:700;
+  line-height:1;color:var(--accent);font-variant-numeric:tabular-nums;display:block}
+.countdown .l{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.countdown .hrs{display:block;font-size:12px;color:var(--ink-3);margin-top:3px;font-variant-numeric:tabular-nums}
+.subcount{display:flex;gap:7px;justify-content:flex-end;flex-wrap:wrap;margin-top:10px}
+.subcount span{display:inline-flex;align-items:baseline;gap:5px;font-size:11.5px;color:var(--ink-2);
+  background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:3px 10px}
+.subcount b{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink)}
+.subcount .h{color:var(--hist)} .subcount .g{color:var(--geo)} .subcount .e{color:var(--eng)}
+
+/* overall bar */
+.overall{display:flex;align-items:center;gap:14px;margin-top:18px}
+.obar{flex:1;height:8px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.obar i{display:block;height:100%;background:var(--done);border-radius:99px;transition:width .35s ease}
+.opct{font-size:13px;font-weight:600;color:var(--ink-2);font-variant-numeric:tabular-nums;min-width:120px;text-align:right}
+
+/* tabs */
+nav.tabs{display:flex;gap:2px;margin:26px 0 22px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+nav.tabs button{
+  appearance:none;background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;
+  padding:9px 14px;font:inherit;font-weight:600;font-size:14px;color:var(--ink-3);cursor:pointer;border-radius:6px 6px 0 0}
+nav.tabs button:hover{color:var(--ink)}
+nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+nav.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* phase band */
+.phase{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:26px}
+.phase div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:13px 15px}
+.phase b{display:block;font-size:13px;font-weight:700;margin-bottom:2px}
+.phase span{font-size:12.5px;color:var(--ink-2);line-height:1.5}
+
+/* week layout */
+.cols{display:grid;grid-template-columns:230px 1fr;gap:28px;align-items:start}
+.rail{display:flex;flex-direction:column;gap:1px;position:sticky;top:16px}
+.rail button{
+  display:flex;align-items:center;gap:11px;width:100%;text-align:left;
+  appearance:none;background:none;border:0;padding:8px 10px;border-radius:8px;
+  font:inherit;font-size:13.5px;color:var(--ink-2);cursor:pointer}
+.rail button:hover{background:var(--surface-2)}
+.rail button[aria-current="true"]{background:var(--surface);color:var(--ink);font-weight:600;box-shadow:var(--shadow)}
+.rail button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.dot{flex:0 0 auto;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line-2);
+  display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--ink-3);
+  font-variant-numeric:tabular-nums;background:var(--surface)}
+.dot.part{border-color:var(--warn);color:var(--warn)}
+.dot.full{border-color:var(--done);background:var(--done);color:#fff}
+.rail .wk-date{margin-left:auto;font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.phead{padding:18px 22px 16px;border-bottom:1px solid var(--line)}
+.phead h2{font-size:21px;font-weight:700;margin-bottom:3px}
+.phead .meta{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);margin-top:8px}
+.phead .meta b{color:var(--ink);font-weight:600}
+.goal{margin-top:12px;padding:10px 13px;background:var(--surface-2);border-radius:8px;
+  font-size:13px;color:var(--ink-2);border-left:3px solid var(--accent)}
+
+ul.tasks{list-style:none;margin:0;padding:0}
+ul.tasks li{display:flex;gap:12px;align-items:flex-start;padding:13px 22px;border-bottom:1px solid var(--line)}
+ul.tasks li:last-child{border-bottom:0}
+ul.tasks li.on{background:var(--done-bg)}
+ul.tasks input[type=checkbox]{
+  flex:0 0 auto;appearance:none;width:19px;height:19px;margin:2px 0 0;border:1.5px solid var(--line-2);
+  border-radius:5px;background:var(--surface);cursor:pointer;position:relative;transition:all .12s}
+ul.tasks input[type=checkbox]:hover{border-color:var(--done)}
+ul.tasks input[type=checkbox]:checked{background:var(--done);border-color:var(--done)}
+ul.tasks input[type=checkbox]:checked::after{
+  content:"";position:absolute;left:5.5px;top:2px;width:5px;height:10px;
+  border:solid #fff;border-width:0 2px 2px 0;transform:rotate(43deg)}
+ul.tasks input[type=checkbox]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tbody{flex:1;min-width:0}
+.tbody label{display:block;cursor:pointer;font-size:14.5px;line-height:1.5}
+li.on .tbody label{color:var(--ink-2)}
+.tbody .note{font-size:12.5px;color:var(--ink-3);margin-top:3px;line-height:1.5}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  padding:2px 7px;border-radius:4px;margin-bottom:4px}
+.tag.h{color:var(--hist);background:color-mix(in srgb,var(--hist) 12%,transparent)}
+.tag.g{color:var(--geo);background:color-mix(in srgb,var(--geo) 12%,transparent)}
+.tag.e{color:var(--eng);background:color-mix(in srgb,var(--eng) 12%,transparent)}
+.tag.r{color:var(--ink-2);background:var(--surface-2)}
+
+.rhythm{padding:16px 22px;background:var(--surface-2);border-top:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+.rhythm b{color:var(--ink)}
+
+/* exam map */
+.exam{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--shadow);padding:20px 22px;margin-bottom:18px}
+.exam h3{font-size:18px;font-weight:700}
+.exam .sub{font-size:12.5px;color:var(--ink-3);margin-top:2px;margin-bottom:14px}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:380px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+tr.tot td{border-bottom:0;border-top:1.5px solid var(--line-2);font-weight:700}
+.flag{margin-top:14px;padding:11px 14px;border-radius:8px;background:color-mix(in srgb,var(--warn) 11%,transparent);
+  border-left:3px solid var(--warn);font-size:13px;color:var(--ink-2)}
+.flag b{color:var(--ink)}
+
+/* sources */
+ul.srclist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.srclist li{display:flex;flex-direction:column;gap:3px;font-size:13.5px;color:var(--ink-2);line-height:1.55}
+ul.srclist a{color:var(--accent);font-weight:600;text-decoration:none;border-bottom:1px solid transparent}
+ul.srclist a:hover{border-bottom-color:var(--accent)}
+ul.srclist > li > a:first-child{font-size:14.5px}
+ul.srclist b{color:var(--ink)}
+ul.srclist code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;
+  background:var(--surface-2);padding:1px 5px;border-radius:4px}
+
+/* theme picker + wiki chips */
+.thpick{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.thpick button{appearance:none;border:1px solid var(--line);background:var(--surface);border-radius:8px;
+  padding:7px 13px;font:inherit;font-size:13px;font-weight:600;color:var(--ink-2);cursor:pointer;text-align:left}
+.thpick button:hover{border-color:var(--line-2);background:var(--surface-2)}
+.thpick button[aria-pressed="true"]{background:var(--hist);border-color:var(--hist);color:#fff}
+.thpick button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.thpick small{display:block;font-weight:500;font-size:11px;opacity:.75;margin-top:1px}
+.thread{font-size:13.5px;color:var(--ink-2);line-height:1.6;margin:0 0 16px;max-width:66ch}
+.thread b{color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips a{display:inline-block;font-size:13px;padding:5px 11px;border-radius:99px;text-decoration:none;
+  border:1px solid var(--line);background:var(--surface-2);color:var(--ink);line-height:1.35}
+.chips a:hover{border-color:var(--hist);color:var(--hist)}
+.chips a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wsearch{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}
+.wsearch input{flex:1;min-width:200px;font:inherit;font-size:14px;padding:10px 13px;border-radius:8px;
+  border:1px solid var(--line-2);background:var(--surface);color:var(--ink)}
+.wsearch input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+
+/* quiz */
+.qintro{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--shadow);padding:20px 22px;margin-bottom:18px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;margin-bottom:12px}
+.q .qn{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
+.q p{margin:5px 0 12px;font-size:15px;font-weight:500;line-height:1.5}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opts label{display:flex;gap:10px;align-items:flex-start;padding:8px 11px;border:1px solid var(--line);
+  border-radius:7px;cursor:pointer;font-size:14px;line-height:1.45}
+.opts label:hover{border-color:var(--line-2);background:var(--surface-2)}
+.opts input{margin:3px 0 0;accent-color:var(--accent);flex:0 0 auto}
+.opts label.right{border-color:var(--done);background:var(--done-bg)}
+.opts label.wrong{border-color:#C0705E;background:color-mix(in srgb,#C0705E 10%,transparent)}
+.btn{appearance:none;border:0;border-radius:8px;padding:11px 22px;font:inherit;font-weight:600;font-size:14px;
+  background:var(--accent);color:#fff;cursor:pointer}
+.btn:hover{filter:brightness(1.07)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.btn.ghost{background:none;color:var(--ink-2);border:1px solid var(--line-2)}
+.qactions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+#result{margin-bottom:18px}
+.rescard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--shadow);padding:20px 22px}
+.rescard h3{font-size:18px;margin-bottom:8px}
+.reslist{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-direction:column;gap:7px}
+.reslist li{display:flex;gap:10px;align-items:baseline;font-size:14px;padding:8px 12px;border-radius:7px;background:var(--surface-2)}
+.reslist .mark{font-weight:700;font-size:12px;letter-spacing:.05em}
+.reslist .ok .mark{color:var(--done)}
+.reslist li.weak{background:color-mix(in srgb,var(--warn) 11%,transparent)}
+.reslist li.weak .mark{color:var(--warn)}
+
+/* sync + activity */
+.syncline{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:12px;color:var(--ink-3);
+  flex-wrap:wrap;border-radius:8px;padding:6px 0}
+.syncline.bad{background:color-mix(in srgb,#C0705E 12%,transparent);color:var(--ink);padding:9px 13px;
+  border:1px solid color-mix(in srgb,#C0705E 40%,transparent);font-size:12.5px}
+.syncdot{width:7px;height:7px;border-radius:50%;background:var(--ink-3);flex:0 0 auto}
+.syncdot.live{background:var(--done)}
+.syncdot.local{background:#C0705E}
+.sharebox{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:12px;
+  padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.sharebox input{flex:1;min-width:210px;font:inherit;font-size:12.5px;padding:8px 11px;border-radius:7px;
+  border:1px solid var(--line-2);background:var(--surface-2);color:var(--ink)}
+.sharebox .shnote{flex-basis:100%;font-size:12px;color:var(--ink-3);line-height:1.5}
+.sharebox .shnote b{color:var(--ink)}
+.stamp{margin-left:auto;font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.recent{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:14px 18px;margin-bottom:22px;box-shadow:var(--shadow)}
+.recent .eyebrow{margin-bottom:9px;display:block}
+.recent ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.recent li{display:flex;gap:10px;align-items:baseline;font-size:13px;color:var(--ink-2)}
+.recent .when{flex:0 0 auto;font-size:11.5px;color:var(--ink-3);font-variant-numeric:tabular-nums;
+  min-width:78px}
+.recent .what{color:var(--ink);min-width:0}
+.recent .sub{flex:0 0 auto;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.recent .sub.h{color:var(--hist)} .recent .sub.g{color:var(--geo)}
+.recent .sub.e{color:var(--eng)} .recent .sub.r{color:var(--ink-3)}
+
+.foot{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3);max-width:70ch}
+.foot a{color:var(--accent)}
+[hidden]{display:none !important}
+
+@media (max-width:820px){
+  .cols{grid-template-columns:1fr}
+  .rail{position:static;flex-direction:row;overflow-x:auto;gap:6px;padding-bottom:6px}
+  .rail button{width:auto;flex:0 0 auto;padding:7px 11px}
+  .rail .wk-date{display:none}
+  .phase{grid-template-columns:1fr}
+  .mast h1{font-size:25px}
+  .countdown{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header class="mast">
+    <div>
+      <div class="eyebrow">ეროვნული გამოცდები · ივლისი 2027</div>
+      <h1>ანას სამი თვე</h1>
+      <p>15 სექტემბერი — 14 დეკემბერი 2026. ისტორია, ქართული, ინგლისური. ნელა იწყება, კვირაში ერთხელ მძიმდება.</p>
+    </div>
+    <div class="countdown">
+      <span class="n" id="days">—</span>
+      <span class="l">დღე პირველ გამოცდამდე</span>
+      <span class="hrs" id="hrs"></span>
+      <div class="subcount" id="subcount"></div>
+    </div>
+  </header>
+
+  <div class="overall">
+    <div class="obar"><i id="obar" style="width:0%"></i></div>
+    <div class="opct" id="opct">0 / 0 შესრულებული</div>
+  </div>
+  <div class="syncline" id="syncline"><span class="syncdot" id="syncdot"></span><span id="synctext">იტვირთება…</span><span class="stamp" id="stamp"></span></div>
+  <div class="sharebox" id="sharebox"></div>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" id="t-plan" aria-selected="true" aria-controls="v-plan">გეგმა</button>
+    <button role="tab" id="t-quiz" aria-selected="false" aria-controls="v-quiz">საწყისი ტესტი</button>
+    <button role="tab" id="t-exam" aria-selected="false" aria-controls="v-exam">გამოცდის რუკა</button>
+    <button role="tab" id="t-src" aria-selected="false" aria-controls="v-src">მასალები</button>
+  </nav>
+
+  <section id="v-plan" role="tabpanel" aria-labelledby="t-plan">
+    <div class="phase">
+      <div><b>კვირა 1–4 · შეგუება</b><span>45 წთ → 1 სთ დღეში, 5 დღე. ისტორიის პირველი 4 თემა. ქართულის პუნქტუაცია ყოველდღე.</span></div>
+      <div><b>კვირა 5–9 · აჩქარება</b><span>1 სთ 15 წთ, 6 დღე. თემები 5–7 + პირველი გამეორება. ესეს წერა იწყება.</span></div>
+      <div><b>კვირა 10–13 · სისრულე</b><span>1.5–2 სთ, 6 დღე. თემები 8–11. სამივე საგანში პირველი სრული ვარიანტი.</span></div>
+    </div>
+
+    <div class="recent" id="recent" hidden>
+      <span class="eyebrow">ბოლო ცვლილებები</span>
+      <ul id="recentlist"></ul>
+    </div>
+
+    <div class="cols">
+      <div class="rail" id="rail" role="tablist" aria-label="კვირები"></div>
+      <div class="panel">
+        <div class="phead">
+          <div class="eyebrow" id="wk-eyebrow">კვირა 1</div>
+          <h2 id="wk-title">—</h2>
+          <div class="meta" id="wk-meta"></div>
+          <div class="goal" id="wk-goal"></div>
+        </div>
+        <ul class="tasks" id="tasks"></ul>
+        <div class="rhythm" id="wk-rhythm"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="v-quiz" role="tabpanel" aria-labelledby="t-quiz" hidden>
+    <div class="qintro">
+      <h3 style="font-size:19px">სად ვდგავართ ისტორიაში</h3>
+      <p style="color:var(--ink-2);font-size:14px;margin:8px 0 0;max-width:62ch">14 კითხვა, ყველა თემიდან თითო-ორი. ქულა არ გამოჩნდება — მხოლოდ ის, რომელი თემა უნდა გავიაროთ ჯერ. არ იცი — არ გამოიცნო, უბრალოდ გამოტოვე. ეს შედეგი არავის ეჩვენება.</p>
+    </div>
+    <div id="result" hidden></div>
+    <div id="quiz"></div>
+    <div class="qactions">
+      <button class="btn" id="qsubmit">შედეგის ნახვა</button>
+      <button class="btn ghost" id="qreset">თავიდან</button>
+    </div>
+  </section>
+
+  <section id="v-exam" role="tabpanel" aria-labelledby="t-exam" hidden>
+    <div class="exam">
+      <h3>ისტორია</h3>
+      <div class="sub">60 ქულა · 2 სთ 40 წთ · ბარიერი: 15-ზე მეტი ქულა (25%)</div>
+      <div class="tw"><table>
+        <tr><th>ნაწილი</th><th>რა არის</th><th style="text-align:right">ქულა</th></tr>
+        <tr><td>კითხვა 1–35</td><td>დახურული, 4 ვარიანტი</td><td class="num">35</td></tr>
+        <tr><td>კითხვა 36</td><td>ისტორიული რუკა, 6 კითხვა</td><td class="num">6</td></tr>
+        <tr><td>კითხვა 37</td><td>ღია შეფასება — მოვლენა/პიროვნება</td><td class="num">5</td></tr>
+        <tr><td>კითხვა 38</td><td>უცნობი წყაროს ანალიზი, 10 კითხვა</td><td class="num">14</td></tr>
+        <tr class="tot"><td colspan="2">სულ</td><td class="num">60</td></tr>
+      </table></div>
+      <div class="flag"><b>აქ არ არის დიდი ესე.</b> 60-დან 35 ქულა დახურული კითხვებია — ანუ ფაქტების ცოდნა, არა წერის უნარი. ამიტომ ისტორია ჯდება პირველ ადგილზე: 11 თემა უნდა გაიაროს ბოლომდე, არა ლამაზად დაიწეროს.</div>
+      <div class="flag" style="border-left-color:var(--geo);background:color-mix(in srgb,var(--geo) 10%,transparent)">11 სავალდებულო თემა: ძველი აღმოსავლეთი · საბერძნეთი-რომი · IV–X სს. · XI–XV სს. · XVI–XVIII სს. · XIX ს. მსოფლიო · საქართველო რუსეთის იმპერიაში · I მსოფლიო ომი და 1918–1921 · II მსოფლიო ომი · ცივი ომი · სსრკ-ს დაშლა და 1991.</div>
+    </div>
+
+    <div class="exam">
+      <h3>ქართული ენა და ლიტერატურა</h3>
+      <div class="sub">60 ქულა · 3 საათი · ბარიერი: 15-ზე მეტი ქულა (25%)</div>
+      <div class="tw"><table>
+        <tr><th>ნაწილი</th><th>რა არის</th><th style="text-align:right">ქულა</th></tr>
+        <tr><td>I</td><td>ტექსტის რედაქტირება — ორთოგრაფია 8, სტილი 2, პუნქტუაცია 6</td><td class="num">16</td></tr>
+        <tr><td>II</td><td>წაკითხულის გააზრება, 10 კითხვა</td><td class="num">10</td></tr>
+        <tr><td>III</td><td>წერითი დავალება (150+ სიტყვა), 10 კრიტერიუმი</td><td class="num">34</td></tr>
+        <tr class="tot"><td colspan="2">სულ</td><td class="num">60</td></tr>
+      </table></div>
+      <div class="flag"><b>ეს ყველაზე მძიმეწონიანი საგანია.</b> თსუ-ს სამართალზე ქართულს კოეფიციენტი 5 აქვს, ინგლისურს 3, ისტორიას 4. ე.ი. ქართულის ერთი ქულა ყველაზე ძვირი ღირს. 16 ქულა რედაქტირებაში სუფთა წესებია — ყველაზე სწრაფად ასაწევი ნაწილი.</div>
+    </div>
+
+    <div class="exam">
+      <h3>ინგლისური</h3>
+      <div class="sub">70 ქულა · 2 სთ 30 წთ · დონე B1 · ბარიერი: 14-ზე მეტი ქულა (20%)</div>
+      <div class="tw"><table>
+        <tr><th>დავალება</th><th>რა არის</th><th style="text-align:right">ქულა</th></tr>
+        <tr><td>1</td><td>მოსმენა — 3–4 წთ ჩანაწერი, ორჯერ ისმის</td><td class="num">8</td></tr>
+        <tr><td>2</td><td>კითხვა — სათაურების დამთხვევა</td><td class="num">8</td></tr>
+        <tr><td>3</td><td>კითხვა — არჩევითი პასუხები</td><td class="num">8</td></tr>
+        <tr><td>4</td><td>ლექსიკა — ხარვეზების შევსება</td><td class="num">12</td></tr>
+        <tr><td>5</td><td>გრამატიკა — ხარვეზების შევსება</td><td class="num">12</td></tr>
+        <tr><td>6</td><td>დიალოგის შევსება</td><td class="num">6</td></tr>
+        <tr><td>7</td><td>წერა — 120–170 სიტყვა (Fluency 8 + Accuracy 8)</td><td class="num">16</td></tr>
+        <tr class="tot"><td colspan="2">სულ</td><td class="num">70</td></tr>
+      </table></div>
+      <div class="flag"><b>მოსმენა არის.</b> 8 ქულა — ჩანაწერი ორჯერ ისმის. ამიტომ გეგმაში მოსმენა კვირაში ორჯერ ზის, თუნდაც ინგლისური ძლიერი საგანი იყოს. და ერთი წესი, რომელიც უფასოდ კარგავს 16 ქულას: <b>ესეში პირადი სახელი არ დაიწეროს</b> — 0 ქულაა.</div>
+    </div>
+
+    <div class="exam">
+      <h3>რაც წელს შეიცვალა</h3>
+      <div class="sub">2026 წლის მიღებიდან</div>
+      <p style="font-size:14px;color:var(--ink-2);margin:0 0 12px;max-width:66ch">სახელმწიფო სასწავლო გრანტი აბიტურიენტებისთვის გაუქმდა. სამაგიეროდ <b style="color:var(--ink)">სახელმწიფო უნივერსიტეტში სწავლა უფასოა</b>, კერძოში კი გრანტი აღარ გაიცემა. ე.ი. მიზანი აღარაა „გრანტის აღება" — მიზანია <b style="color:var(--ink)">სახელმწიფო უნივერსიტეტში ადგილი</b>. ბაკალავრიატი 3 წლიანი გახდა.</p>
+      <div class="flag" style="border-left-color:var(--eng);background:color-mix(in srgb,var(--eng) 10%,transparent)"><b>მეოთხე საგანი ღირს 10 ლარი და არაფერს აფუჭებს.</b> საკონკურსო ქულა ითვლება მხოლოდ იმ საგნებიდან, რომლებსაც კონკრეტული პროგრამა ითხოვს — დანარჩენი არსად ჩნდება. ე.ი. ცუდი ქულა მეოთხე საგანში რეიტინგს არ აზიანებს. სამოქალაქო განათლება ისტორიის გვერდით მისაღებია თსუ-ს სამართალზე, კავკასიის სამართალზე და GAU-ს სამართალზე — და ბევრად მსუბუქი სასწავლია, ვიდრე მათემატიკა.</div>
+    </div>
+  </section>
+
+  <section id="v-src" role="tabpanel" aria-labelledby="t-src" hidden>
+    <div class="exam">
+      <h3>სახელმძღვანელოები — აქედან იკითხება თემები</h3>
+      <div class="sub">უფასო PDF-ები, გამომცემლობების საკუთარი საიტებიდან</div>
+      <ul class="srclist">
+        <li><a href="https://sites.google.com/view/diogene-10" target="_blank" rel="noopener">დიოგენე — X კლასი</a>
+          <span>„ისტორია“ (მსოფლიო) ნაწილი I — აქ არის <b>ძველი აღმოსავლეთი</b>. და ცალკე „საქართველოს ისტორია“ ნაწილი I — კოლხეთი და ქართლი. მოსწავლის წიგნი + რვეული.</span></li>
+        <li><a href="https://sites.google.com/view/sulakauri-schoolbooks/shcoolbooks-2022/history-10" target="_blank" rel="noopener">ბაკურ სულაკაური — მსოფლიო ისტორია 10</a>
+          <span>იგივე მასალა სხვა ავტორებით. კარგია მეორე კუთხით წასაკითხად, თუ პირველი ბუნდოვანია.</span></li>
+      </ul>
+    </div>
+
+    <div class="exam">
+      <h3>ნამდვილი გამოცდები — უფასოდ, ყველა წელი</h3>
+      <div class="sub">ეს არის ყველაზე ღირებული რესურსი მთელ სიაში</div>
+      <ul class="srclist">
+        <li><a href="https://abituri.ge/erovnulebis-testebi" target="_blank" rel="noopener">abituri.ge — ეროვნულების ტესტები 2011–2025</a>
+          <span>ონლაინ ინტერაქტიული ვარიანტები + PDF პასუხების გასაღებით. რეგისტრაციის და გადახდის გარეშე.</span></li>
+        <li><a href="https://testebi.ge/" target="_blank" rel="noopener">testebi.ge — 2005–2026</a>
+          <span>იგივე, უფრო ღრმა არქივით. მისამართები მარტივია: <code>testebi.ge/istoria-1-varianti-2026</code>.</span></li>
+        <li><a href="https://edu.aris.ge/news/2026-wlis-ertian-erovnul-gamocdebze-gamoyenebuli-testebi.html" target="_blank" rel="noopener">2026 წლის ტესტები და შეფასების სქემები</a>
+          <span>ყველაზე ახალი რეალური გამოცდა. შეფასების სქემა გვიჩვენებს, რაზე რამდენი ქულა იწერება — ესეც ისეთივე მნიშვნელოვანია, როგორც პასუხი.</span></li>
+      </ul>
+    </div>
+
+    <div class="exam">
+      <h3>ოფიციალური — NAEC</h3>
+      <div class="sub">naec.ge · უფასო</div>
+      <ul class="srclist">
+        <li><a href="https://edu.aris.ge/news/2026-wlis-sagamocdo-programebi-ertiani-erovnuli-gamocdebistvis.html" target="_blank" rel="noopener">2026 წლის საგამოცდო პროგრამები</a>
+          <span>ისტორიის პროგრამა = 11 თემის ოფიციალური სია. ის, რაც აქ არ წერია, გამოცდაზე არ არის.</span></li>
+        <li><a href="https://www.naec.ge/" target="_blank" rel="noopener">„როგორ მოვემზადოთ — ისტორია“ (აბიტურიენტის კრებული)</a>
+          <span>ახსნილია, როგორ არის აგებული თითოეული კითხვა და როგორ ფასდება 37-ე და 38-ე დავალება. naec.ge → აბიტურიენტები → კრებულები.</span></li>
+        <li><a href="https://www.youtube.com/watch?v=9gr1ZBFIUsM" target="_blank" rel="noopener">მანანა ჯავახიშვილის ვიდეოინსტრუქცია</a>
+          <span>NAEC-ის ისტორიის ჯგუფის ხელმძღვანელი ხსნის, რას ელოდებიან პასუხში. ტექნიკაა, არა მასალა.</span></li>
+      </ul>
+    </div>
+
+    <div class="exam">
+      <h3>თემები 1–4 — პირველი თვე</h3>
+      <div class="sub">აირჩიე კვირა. თითოეული სიტყვა ბმულია — ხსნის ქართულ ვიკიპედიას.</div>
+
+      <div class="thpick" id="thpick"></div>
+
+      <div class="thbody">
+        <p class="thread" id="thread"></p>
+        <div class="eyebrow" style="margin-bottom:9px">ვიკიპედია — დააწკაპე რასაც ეძებ</div>
+        <div class="chips" id="chips"></div>
+      </div>
+
+      <form class="wsearch" id="wsearch">
+        <input type="text" id="wq" placeholder="ან ჩაწერე სხვა სიტყვა — მოძებნის ქართულ ვიკიპედიაში" aria-label="ძებნა ვიკიპედიაში">
+        <button class="btn" type="submit">ძებნა</button>
+      </form>
+
+      <div class="flag"><b>ერთი ხარვეზი, რომელიც უნდა იცოდე.</b> abituri.ge-ს თემატურ ტესტებში ძველი აღმოსავლეთის ცალკე თემა <b>არ არის</b>. ამ თემაზე კითხვები მხოლოდ სრული ვარიანტების შიგნით გხვდება — ე.ი. პირველ კვირას ვარჯიში ხდება წიგნით და საკუთარი თარიღების ფურცლით, ტესტით არა. თემა 3-იდან თემატური ტესტები უკვე ფარავს მასალას.</div>
+    </div>
+  </section>
+
+  <div class="foot">
+    მონიშვნები ინახება საერთოდ — რასაც ერთი მონიშნავს, მეორესთან გამოჩნდება. სტრუქტურა და ქულები აღებულია NAEC-ის 2026 წლის ოფიციალური პროგრამებიდან და შეფასების სქემებიდან — 2027 წლის პროგრამა ჯერ არ გამოქვეყნებულა (ჩვეულებრივ სექტემბერ-ოქტომბერში ჩნდება), გამოსვლისთანავე უნდა გადამოწმდეს.
+  </div>
+</div>
+
+<script>
+const WEEKS = [
+ {n:1,d:"15–21 სექტ",title:"დაწყება — ზეწოლის გარეშე",load:"45 წთ დღეში · 5 დღე",
+  goal:"ამ კვირას მიზანი არ არის ბევრი ისწავლო. მიზანია დაინახო რა იცი უკვე და ჩვევა გაჩნდეს.",
+  rhythm:"ორშ–პარ 45 წთ. შაბ–კვ დასვენება. თუ ერთი დღე გამოგრჩა — არაფერი, არ ანაზღაურდება.",
+  t:[
+   ["h","გაიარე საწყისი ტესტი ამ გვერდზე","ჩანართი „საწყისი ტესტი“. ქულა არ გამოჩნდება."],
+   ["h","თემა 1 — ძველი აღმოსავლეთი და საქართველო","შუამდინარეთი, ეგვიპტე, აქემენიდები + კოლხეთი და ქართლი. წაიკითხე სასკოლო თავი."],
+   ["h","ამოწერე 15 თარიღი და სახელი თემა 1-იდან","ერთ ფურცელზე, ხელით. ეს ფურცელი შენახე — დეკემბერში გამოადგება."],
+   ["g","პუნქტუაცია: მძიმე თანწყობილ წინადადებაში","წესი + 20 მაგალითი. 15 წთ დღეში, ყოველდღე."],
+   ["g","წაიკითხე „შუშანიკის წამება“ ბოლომდე","29 სავალდებულო ტექსტიდან პირველი. ახლა ვიწყებთ, რომ ივნისში აღარ გვიწევდეს."],
+   ["e","10 წთ ხმამაღლა ლაპარაკი დევიდთან, ყოველდღე","მხოლოდ ერთი თემა: „ჩემი დღე“. შეცდომებს არავინ ასწორებს ამ კვირას."],
+   ["e","ერთი მოსმენა: 3–4 წთ ჩანაწერი, ორჯერ","ზუსტად როგორც გამოცდაზე. ჩაინიშნე 8 ფაქტი."]]},
+
+ {n:2,d:"22–28 სექტ",title:"თემა 2 — საბერძნეთი, რომი და საქართველო",load:"45 წთ დღეში · 5 დღე",
+  goal:"პირველი სრული თემა თავიდან ბოლომდე, საკუთარი ჩანაწერებით.",
+  rhythm:"იგივე რიტმი. ისტორია 25 წთ, ქართული 10 წთ, ინგლისური 10 წთ.",
+  t:[
+   ["h","თემა 2 — ბერძნული პოლისები, ელინიზმი, რომი","+ ფარნავაზი, ქართლის სამეფოს ჩამოყალიბება."],
+   ["h","გააკეთე თემა 2-ის თარიღების ფურცელი","იგივე ფორმატი, რაც თემა 1-ზე."],
+   ["h","ნახე რუკაზე: კოლხეთი, იბერია, რომის პროვინციები","რუკის კითხვა 6 ქულაა — ადრე უნდა შევაჩვიოთ თვალი."],
+   ["g","პუნქტუაცია: მძიმე დამოკიდებულ წინადადებასთან","კვირის წესი. 15 წთ ყოველდღე."],
+   ["g","წაიკითხე „აბოს წამება“","მეორე სავალდებულო ტექსტი."],
+   ["e","10 წთ ლაპარაკი — თემა: „ფილმი, რომელიც მომეწონა“","დევიდი მხოლოდ უსმენს. ჩაწერეთ ტელეფონზე, ერთად მოუსმინეთ."],
+   ["e","ერთი მოსმენა + 12 ახალი სიტყვა","სიტყვები ბარათებზე."]]},
+
+ {n:3,d:"29 სექტ – 5 ოქტ",title:"თემა 3 — IV–X საუკუნეები",load:"1 საათი დღეში · 5 დღე",
+  goal:"ქრისტიანობა, ბიზანტია, არაბები. ინგლისურში პირველი წერითი დავალება.",
+  rhythm:"დრო 45 წთ-დან 1 საათამდე იზრდება. ისტორია 30 წთ, ქართული 15 წთ, ინგლისური 15 წთ.",
+  t:[
+   ["h","თემა 3 — რომის დაცემა, ქრისტიანობა, ფრანკები, ბიზანტია, არაბები","+ ქართლის გაქრისტიანება, არაბთა ბატონობა, თბილისის საამირო."],
+   ["h","თარიღების ფურცელი თემა 3-ზე",""],
+   ["h","10 კითხვა თემებიდან 1–2, გამეორება","პირველი გამეორება — ერთი კვირის შემდეგ ყველაზე კარგად მუშაობს."],
+   ["g","ორთოგრაფია: ხმოვანთა და თანხმოვანთა ხშირი შეცდომები","15 წთ ყოველდღე."],
+   ["g","დაიწყე „ვეფხისტყაოსანი“ — პროლოგი და პირველი თავები","ყველაზე გრძელი ტექსტია, ამიტომ ახლა ვიწყებთ, პატარ-პატარა."],
+   ["e","პირველი წერითი დავალება: 120–170 სიტყვა","თემა: „Should students work while studying?“ — სახელები არ ჩაწერო."],
+   ["e","10 წთ ლაპარაკი ყოველდღე + ერთი მოსმენა",""]]},
+
+ {n:4,d:"6–12 ოქტ",title:"თემა 4 — XI–XV საუკუნეები",load:"1 საათი დღეში · 5 დღე",
+  goal:"ოქროს ხანა. ეს თემა ყველაზე ხშირად ხვდება გამოცდაზე — მასზე მეტი დრო გაჩერდი.",
+  rhythm:"იგივე. ისტორიას ამ კვირას 35 წთ მიეცი.",
+  t:[
+   ["h","თემა 4 — ჯვაროსნები, ფეოდალიზმი, მონღოლები, ოსმალები","+ დავით აღმაშენებელი, თამარი, დიდგორი, მონღოლთა შემოსევები."],
+   ["h","დაიმახსოვრე 12 თარიღი ოქროს ხანიდან","1121 დიდგორი, 1184–1213 თამარი და ა.შ."],
+   ["h","დაწერე 10 წინადადება: რატომ გაძლიერდა საქართველო XII საუკუნეში","ეს 37-ე კითხვის ვარჯიშია — არგუმენტი, არა ჩამონათვალი."],
+   ["g","პუნქტუაცია: ორწერტილი და ტირე","15 წთ ყოველდღე."],
+   ["g","„ვეფხისტყაოსანი“ — გააგრძელე",""],
+   ["e","10 წთ ლაპარაკი + ერთი მოსმენა","თემა: „A place I want to go“."],
+   ["r","კვირის ბოლოს: 20 წუთი ერთად","რა იყო ადვილი, რა რთული, რა უნდა შეიცვალოს. დაწერეთ."]]},
+
+ {n:5,d:"13–19 ოქტ",title:"გამეორება 1 — თემები 1–4",load:"1 სთ 15 წთ · 6 დღე",
+  goal:"ახალი არაფერი. მხოლოდ გამეორება და პირველი ქართული ესე.",
+  rhythm:"ახლა ემატება შაბათი. კვირა მაინც დასვენებაა.",
+  t:[
+   ["h","გადაიკითხე ოთხივე თარიღების ფურცელი","30 წთ, ორჯერ კვირაში."],
+   ["h","40 კითხვიანი ტესტი თემებიდან 1–4","ნელა, წიგნით. მიზანი შემოწმება არაა — გამეორებაა."],
+   ["h","რუკის ვარჯიში: ანტიკური და შუა საუკუნეების საქართველო","6 ქულა რუკაზეა."],
+   ["g","პირველი სრული ესე — 150+ სიტყვა","შეაფასე 10 კრიტერიუმით: აზრი, აგება, ანალიზი, აქტუალობა, განათლება, დამოუკიდებლობა, სიზუსტე, ლექსიკა, გრამატიკა, პუნქტუაცია."],
+   ["g","„ვეფხისტყაოსანი“ — გააგრძელე",""],
+   ["e","გრამატიკის სავარჯიშო: 12 ხარვეზი","ზუსტად გამოცდის ფორმატში."],
+   ["e","10 წთ ლაპარაკი + ორი მოსმენა","ამ კვირიდან მოსმენა ორჯერ."]]},
+
+ {n:6,d:"20–26 ოქტ",title:"თემა 5 — XVI–XVIII საუკუნეები",load:"1 სთ 15 წთ · 6 დღე",
+  goal:"რეფორმაცია, ოსმალეთ-სპარსეთის ომები, დაქუცმაცებული საქართველო.",
+  rhythm:"ისტორია 40 წთ, ქართული 20 წთ, ინგლისური 15 წთ.",
+  t:[
+   ["h","თემა 5 — რეფორმაცია, დიდი გეოგრაფიული აღმოჩენები, აბსოლუტიზმი","+ გიორგი სააკაძე, მარაბდა, ერეკლე II, გეორგიევსკის ტრაქტატი."],
+   ["h","თარიღების ფურცელი თემა 5-ზე",""],
+   ["h","10 კითხვა თემა 3–4-ზე, გამეორება",""],
+   ["g","ორთოგრაფია + სტილი: ხშირი ლაპსუსები","რედაქტირების ნაწილში 2 ქულა სწორედ სტილზეა."],
+   ["g","სულხან-საბა — „სიბრძნე სიცრუისა“, არჩეული იგავები",""],
+   ["e","წერითი დავალება №2: 120–170 სიტყვა",""],
+   ["e","10 წთ ლაპარაკი + ორი მოსმენა",""]]},
+
+ {n:7,d:"27 ოქტ – 2 ნოემ",title:"თემა 6 — XIX საუკუნის მსოფლიო",load:"1 სთ 15 წთ · 6 დღე",
+  goal:"რევოლუციები, ინდუსტრიალიზაცია, ერების გაერთიანება, ამერიკის სამოქალაქო ომი.",
+  rhythm:"იგივე.",
+  t:[
+   ["h","თემა 6 — 1848, იტალიისა და გერმანიის გაერთიანება, აშშ-ს სამოქალაქო ომი",""],
+   ["h","თარიღების ფურცელი თემა 6-ზე",""],
+   ["h","პირველი წყაროს ანალიზი — 38-ე დავალების ფორმატი","უცნობი ტექსტი + 10 კითხვა. 14 ქულაა, ყველაზე ნაკლებად ნაცნობი ნაწილი."],
+   ["g","პუნქტუაცია: სრული გამეორება, ყველა წესი ერთად","6 ქულა გამოცდაზე."],
+   ["g","ილია ჭავჭავაძე — „მგზავრის წერილები“",""],
+   ["e","ლექსიკის ბლოკი: 12 ხარვეზი, გამოცდის ფორმატში",""],
+   ["e","10 წთ ლაპარაკი — თემა: აზრის დაცვა","დევიდი ეწინააღმდეგება, ანა იცავს. ინგლისურად."]]},
+
+ {n:8,d:"3–9 ნოემ",title:"თემა 7 — საქართველო რუსეთის იმპერიაში",load:"1 სთ 30 წთ · 6 დღე",
+  goal:"დაპყრობა, ბატონყმობის გაუქმება, თერგდალეულები, ეროვნული მოძრაობა.",
+  rhythm:"დრო კიდევ 15 წუთით იზრდება. ისტორია 45 წთ.",
+  t:[
+   ["h","თემა 7 — 1801, აჯანყებები, 1864–1871 ბატონყმობის გაუქმება, თერგდალეულები",""],
+   ["h","თარიღების ფურცელი თემა 7-ზე",""],
+   ["h","დაწერე 37-ე კითხვის ტიპის პასუხი ილიაზე","ვინ მოიგო, ვინ წააგო, ორი არგუმენტი თითოზე."],
+   ["g","ესე №2 — 150+ სიტყვა","ილიას ტექსტზე დაყრდნობით."],
+   ["g","აკაკი წერეთელი — არჩეული ლექსები",""],
+   ["e","წერითი დავალება №3",""],
+   ["e","10 წთ ლაპარაკი + ორი მოსმენა",""]]},
+
+ {n:9,d:"10–16 ნოემ",title:"გამეორება 2 — თემები 5–7",load:"1 სთ 30 წთ · 6 დღე",
+  goal:"მეორე გამეორება + წყაროს ანალიზის უნარი. ახალი თემა არ არის.",
+  rhythm:"იგივე.",
+  t:[
+   ["h","გადაიკითხე თემები 5–7-ის ფურცლები",""],
+   ["h","40 კითხვიანი ტესტი თემებიდან 1–7","ამჯერად წიგნის გარეშე."],
+   ["h","ორი წყაროს ანალიზი, თითო 10 კითხვით","38-ე დავალება — 14 ქულა."],
+   ["h","რუკის ვარჯიში: XIX საუკუნის საქართველო და ევროპა",""],
+   ["g","რედაქტირების სრული ვარიანტი — 16 ქულა","დაითვალე რამდენი შეცდომა დარჩა."],
+   ["e","გრამატიკა + ლექსიკა: 24 ხარვეზი ერთად",""],
+   ["e","10 წთ ლაპარაკი + ორი მოსმენა",""]]},
+
+ {n:10,d:"17–23 ნოემ",title:"თემა 8 — I მსოფლიო ომი, 1918–1921",load:"1 სთ 45 წთ · 6 დღე",
+  goal:"დამოუკიდებლობა, პირველი რესპუბლიკა, საბჭოთა ოკუპაცია. ეს თემა გამოცდაზე თითქმის ყოველთვის არის.",
+  rhythm:"ისტორია 50 წთ.",
+  t:[
+   ["h","თემა 8 — I მსოფლიო ომი, რუსეთის რევოლუციები, სსრკ-ს შექმნა","+ 26 მაისი 1918, პირველი რესპუბლიკა, 1921 წლის ოკუპაცია."],
+   ["h","თარიღების ფურცელი თემა 8-ზე",""],
+   ["h","დაწერე 37-ე ტიპის პასუხი 1921 წელზე","მიზეზი, ვინ მოიგო, ვინ წააგო, ევროპული ანალოგი."],
+   ["g","ესე №3 — 150+ სიტყვა",""],
+   ["g","გალაკტიონი — არჩეული ლექსები",""],
+   ["e","წერითი დავალება №4",""],
+   ["e","10 წთ ლაპარაკი + ორი მოსმენა",""]]},
+
+ {n:11,d:"24–30 ნოემ",title:"თემა 9 — მეორე მსოფლიო ომი",load:"1 სთ 45 წთ · 6 დღე",
+  goal:"ომის ეტაპები, ოპერაციები, საქართველოს მონაწილეობა.",
+  rhythm:"იგივე.",
+  t:[
+   ["h","თემა 9 — 1939–1945, ძირითადი ოპერაციები, ანტიჰიტლერული კოალიცია",""],
+   ["h","თარიღების ფურცელი თემა 9-ზე","ომში თარიღები ბევრია — ეს ფურცელი ორჯერ გადაიკითხე."],
+   ["h","რუკის ვარჯიში: მეორე მსოფლიო ომის ფრონტები",""],
+   ["g","პუნქტუაცია + ორთოგრაფია: შერეული ვარჯიში",""],
+   ["g","ერთი მე-20 საუკუნის ავტორი სიიდან",""],
+   ["e","წაკითხულის გააზრება: სათაურების დამთხვევა + არჩევითი","16 ქულა ერთად."],
+   ["e","10 წთ ლაპარაკი + ორი მოსმენა",""]]},
+
+ {n:12,d:"1–7 დეკ",title:"თემა 10 — ცივი ომი",load:"2 საათი · 6 დღე",
+  goal:"ზესახელმწიფოთა დაპირისპირება, დეკოლონიზაცია, საქართველო სსრკ-ში.",
+  rhythm:"ორი საათი, მაგრამ ორ ნაწილად — დილა და საღამო.",
+  t:[
+   ["h","თემა 10 — ცივი ომი, კრიზისები, დეკოლონიზაცია, რეგიონული კონფლიქტები","+ 1956 და 1978 წლის მოვლენები, 9 აპრილი 1989."],
+   ["h","თარიღების ფურცელი თემა 10-ზე",""],
+   ["h","20 კითხვა თემებიდან 8–9, გამეორება",""],
+   ["g","ესე №4 — 150+ სიტყვა","ამჯერად დროზე: 60 წუთი."],
+   ["g","გამეორება: ლიტერატურული ტერმინები",""],
+   ["e","სრული ინგლისურის ვარიანტი — 70 ქულა, 2.5 საათი","პირველი სრული გატარება, თარიღი წინასწარ დანიშნეთ."],
+   ["e","10 წთ ლაპარაკი ყოველდღე",""]]},
+
+ {n:13,d:"8–14 დეკ",title:"თემა 11 + სამი თვის შეკვრა",load:"2 საათი · 6 დღე",
+  goal:"ბოლო თემა და პირველი სრული ისტორიის ვარიანტი. სამივე თემა თავში ერთად უნდა იჯდეს.",
+  rhythm:"ბოლო კვირაა — შემდეგ ერთი კვირა სრული დასვენება.",
+  t:[
+   ["h","თემა 11 — აღმოსავლეთის ბლოკის და სსრკ-ს დაშლა","+ 9 აპრილი 1991, დამოუკიდებლობის აღდგენა, ტერიტორიული მთლიანობა."],
+   ["h","თარიღების ფურცელი თემა 11-ზე",""],
+   ["h","სრული ისტორიის ვარიანტი — 60 ქულა, 2 სთ 40 წთ","პირველად სრულად, დროზე. აქ უკვე ქულას ვუყურებთ."],
+   ["h","გადაიკითხე თერთმეტივე ფურცელი ზედიზედ","ორ დღეში. ეს არის ის, რაც სექტემბერში დაიწყო."],
+   ["g","სრული ქართულის ვარიანტი — 60 ქულა, 3 საათი",""],
+   ["e","გამეორება: ყველა შეცდომა წერითი დავალებებიდან 1–4",""],
+   ["r","სამი თვის შეჯამება — ერთად, 40 წუთი","რა გამოვიდა, რა არა, რა შეიცვალოს იანვრიდან. მერე დაისვენეთ."]]}
+];
+
+const QUIZ = [
+ {th:1,q:"რომელ მდინარეებს შორის განვითარდა შუამდინარეთის ცივილიზაცია?",o:["ნილოსი და იორდანე","ტიგროსი და ევფრატი","ინდი და განგი","დუნაი და დნეპრი"],a:1},
+ {th:1,q:"როდის ჩამოყალიბდა კოლხეთის სამეფო?",o:["ძვ.წ. VI საუკუნეში","ახ.წ. IV საუკუნეში","ძვ.წ. I საუკუნეში","ახ.წ. X საუკუნეში"],a:0},
+ {th:2,q:"ვინ იყო ფარნავაზი?",o:["კოლხეთის უკანასკნელი მეფე","ქართლის (იბერიის) პირველი მეფე","ბიზანტიის იმპერატორი","არაბი ამირა თბილისში"],a:1},
+ {th:3,q:"რომელი მეფის დროს გამოცხადდა ქრისტიანობა ქართლში სახელმწიფო რელიგიად?",o:["ვახტანგ გორგასალი","ფარნავაზი","მირიან III","დავით აღმაშენებელი"],a:2},
+ {th:3,q:"როგორ ერქვა არაბთა ბატონობის დროს თბილისის მმართველს?",o:["ერისთავი","ამირა","კათალიკოსი","ათაბაგი"],a:1},
+ {th:4,q:"რომელ წელს მოხდა დიდგორის ბრძოლა?",o:["1099","1121","1204","1236"],a:1},
+ {th:4,q:"თამარ მეფის მეფობის წლებია:",o:["1089–1125","1184–1213","1247–1269","1318–1346"],a:1},
+ {th:5,q:"რომელ წელს მოხდა მარაბდის ბრძოლა?",o:["1555","1625","1709","1783"],a:1},
+ {th:5,q:"გეორგიევსკის ტრაქტატი დაიდო:",o:["1774 წელს","1783 წელს","1801 წელს","1812 წელს"],a:1},
+ {th:6,q:"რომელ წელს გაუქმდა ბატონყმობა რუსეთის იმპერიაში?",o:["1848","1861","1871","1905"],a:1},
+ {th:7,q:"ვინ იყვნენ „თერგდალეულები“?",o:["XVIII საუკუნის ქართველი დიპლომატები","რუსეთში განათლებამიღებული ქართველი მოღვაწეები ილიას თაობიდან","საბჭოთა პერიოდის მწერლები","არაბთა შემოსევების მემატიანეები"],a:1},
+ {th:8,q:"როდის გამოცხადდა საქართველოს დამოუკიდებლობა პირველად?",o:["12 მარტი 1917","26 მაისი 1918","25 თებერვალი 1921","9 აპრილი 1991"],a:1},
+ {th:10,q:"რა მოხდა 1989 წლის 9 აპრილს?",o:["საქართველომ დამოუკიდებლობა აღიდგინა","თბილისში მშვიდობიანი მიტინგი დაარბიეს","სსრკ დაიშალა","ბერლინის კედელი დაინგრა"],a:1},
+ {th:11,q:"რომელ წელს აღდგა საქართველოს სახელმწიფოებრივი დამოუკიდებლობა?",o:["1989","1990","1991","1995"],a:2}
+];
+
+const THEMES = {1:"თემა 1 — ძველი აღმოსავლეთი",2:"თემა 2 — საბერძნეთი და რომი",3:"თემა 3 — IV–X საუკუნეები",4:"თემა 4 — XI–XV საუკუნეები",5:"თემა 5 — XVI–XVIII საუკუნეები",6:"თემა 6 — XIX საუკუნის მსოფლიო",7:"თემა 7 — რუსეთის იმპერიაში",8:"თემა 8 — I მსოფლიო ომი და 1918–1921",9:"თემა 9 — II მსოფლიო ომი",10:"თემა 10 — ცივი ომი",11:"თემა 11 — სსრკ-ს დაშლა"};
+const TAGNAME = {h:"ისტორია",g:"ქართული",e:"ინგლისური",r:"ერთად"};
+
+const KEY="anna-plan-v2";
+const BUILD=8;
+const LOCALFILE=(location.protocol==="file:");
+const API="https://jsonblob.com/api/jsonBlob";
+
+/* State shape: {id:{v:0|1, t:ms}} — merged across devices by newest timestamp
+   per item, so two people ticking at once never clobber each other. */
+let state={}, answers={};
+try{
+  const raw=JSON.parse(localStorage.getItem(KEY)||"null");
+  if(raw){ state=raw.tasks||{}; answers=raw.answers||{}; }
+  else{
+    const old=JSON.parse(localStorage.getItem("anna-plan-v1")||"null");
+    if(old){
+      const ot=old.tasks||old;
+      for(const k in ot){ const v=Number(ot[k])||0; if(v) state[k]={v:1,t:v>1e12?v:Date.now()}; }
+      const oa=old.answers||{};
+      for(const k in oa) answers[k]={v:oa[k],t:Date.now()};
+    }
+  }
+}catch(e){ state={}; answers={}; }
+
+function saveLocal(){ try{ localStorage.setItem(KEY,JSON.stringify({tasks:state,answers:answers})); }catch(e){} }
+function isOn(id){ const e=state[id]; return !!(e&&e.v); }
+function atOf(id){ const e=state[id]; return (e&&e.v)?e.t:0; }
+function ansOf(i){ const e=answers[String(i)]; return e?e.v:undefined; }
+
+function setSync(kind,text){
+  const d=document.getElementById("syncdot"), t=document.getElementById("synctext");
+  d.className="syncdot "+kind; t.textContent=text;
+  document.getElementById("syncline").className="syncline"+(kind==="local"?" bad":"");
+}
+function stamp(){
+  const n=new Date();
+  document.getElementById("stamp").textContent="ბილდი "+BUILD+" · მოწყობილობის თარიღი: "+
+    n.toLocaleDateString("ka-GE",{day:"numeric",month:"short",year:"numeric"})+
+    " · "+n.toLocaleTimeString("ka-GE",{hour:"2-digit",minute:"2-digit"});
+}
+
+function why(e){
+  if(LOCALFILE) return "გვერდი გახსნილია ფაილიდან (file://). ასე ბრაუზერი სერვერთან კავშირს კრძალავს — საჭიროა https მისამართი.";
+  if(!navigator.onLine) return "ინტერნეტი გათიშულია.";
+  const m=(e&&e.message)?String(e.message):"უცნობი შეცდომა";
+  return "შეცდომა: "+m+" ("+location.protocol+")";
+}
+function blobId(){ const m=/[#&]b=([A-Za-z0-9_-]+)/.exec(location.hash); return m?m[1]:null; }
+let BID=blobId(), busy=false, dirty=false;
+
+function merge(remote){
+  let ch=false;
+  const rt=(remote&&remote.tasks)||{};
+  for(const k in rt){
+    const r=rt[k]; if(!r||typeof r.t!=="number") continue;
+    const l=state[k];
+    if(!l||r.t>l.t){ state[k]={v:r.v?1:0,t:r.t}; ch=true; }
+  }
+  const ra=(remote&&remote.answers)||{};
+  for(const k in ra){
+    const r=ra[k]; if(!r||typeof r.t!=="number") continue;
+    const l=answers[k];
+    if(!l||r.t>l.t){ answers[k]={v:r.v,t:r.t}; ch=true; }
+  }
+  if(ch) saveLocal();
+  return ch;
+}
+function redraw(){ renderRail(); renderWeek(); renderOverall(); renderRecent(); paintAnswers(); }
+
+async function pull(){
+  if(!BID) return;
+  try{
+    const r=await fetch(API+"/"+BID,{headers:{"Accept":"application/json"},cache:"no-store"});
+    if(!r.ok) throw new Error(r.status);
+    if(merge(await r.json())) redraw();
+    setSync("live","სინქრონიზებულია — ყველა მოწყობილობაზე ერთნაირად");
+  }catch(e){ setSync("local","წაკითხვა ვერ მოხერხდა — "+why(e)); }
+}
+async function push(){
+  saveLocal();
+  renderOverall();
+  if(!BID) return;
+  if(busy){ dirty=true; return; }
+  busy=true;
+  try{
+    const r=await fetch(API+"/"+BID,{method:"PUT",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({tasks:state,answers:answers,at:Date.now()})});
+    if(!r.ok) throw new Error(r.status);
+    setSync("live","სინქრონიზებულია — ყველა მოწყობილობაზე ერთნაირად");
+  }catch(e){ setSync("local","ჩაწერა ვერ მოხერხდა — "+why(e)+" (შენახულია ამ მოწყობილობაზე)"); }
+  busy=false;
+  if(dirty){ dirty=false; push(); }
+}
+async function createShared(){
+  setSync("","საერთო ბმული იქმნება…");
+  try{
+    const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({tasks:state,answers:answers,at:Date.now()})});
+    const loc=r.headers.get("Location")||r.headers.get("location")||"";
+    const id=loc.split("/").filter(Boolean).pop();
+    if(!id) throw new Error("no id");
+    BID=id;
+    history.replaceState(null,"",location.pathname+location.search+"#b="+id);
+    renderShare(); pull();
+  }catch(e){ setSync("local","ბმულის შექმნა ვერ მოხერხდა — "+why(e)); }
+}
+function renderShare(){
+  const box=document.getElementById("sharebox");
+  if(!box) return;
+  if(!BID){
+    box.innerHTML='<button class="btn" id="mkshare" type="button">საერთო ბმულის შექმნა</button>'+
+      '<span class="shnote">'+(LOCALFILE
+        ? '<b>ეს გვერდი ფაილიდან არის გახსნილი (file://).</b> ასე სინქრონიზაცია ვერ იმუშავებს — ბრაუზერი კრძალავს. ჯერ ატვირთე ინტერნეტში (netlify.com/drop), მერე დააჭირე ამ ღილაკს.'
+        : 'დააჭირე ერთხელ — მიიღებ ბმულს, რომელსაც გაუზიარებ. მას შემდეგ ორივესთან ერთი და იგივე გვერდია.')+'</span>';
+    document.getElementById("mkshare").onclick=createShared;
+  }else{
+    box.innerHTML='<input type="text" id="shurl" readonly value="'+location.href.replace(/"/g,"&quot;")+'">'+
+      '<button class="btn" id="cpshare" type="button">კოპირება</button>'+
+      '<span class="shnote">გაუზიარე ზუსტად ეს ბმული, <b>#b=</b> ნაწილითურთ — სწორედ ის კრავს თქვენს ორ გვერდს.</span>';
+    document.getElementById("cpshare").onclick=()=>{
+      const i=document.getElementById("shurl");
+      i.select();
+      try{ navigator.clipboard.writeText(location.href); }catch(e){ try{document.execCommand("copy");}catch(_){} }
+      const b=document.getElementById("cpshare");
+      b.textContent="დაკოპირდა ✓";
+      setTimeout(()=>{ b.textContent="კოპირება"; },1800);
+    };
+  }
+}
+window.addEventListener("hashchange",()=>{ BID=blobId(); renderShare(); pull(); });
+
+function ago(ms){
+  const m=Math.round((Date.now()-ms)/60000);
+  if(m<1) return "ახლახან";
+  if(m<60) return m+" წთ წინ";
+  const h=Math.round(m/60); if(h<24) return h+" სთ წინ";
+  const d=Math.round(h/24); return d===1?"გუშინ":d+" დღის წინ";
+}
+function renderRecent(){
+  const rows=[];
+  WEEKS.forEach(w=>w.t.forEach((t,i)=>{
+    const v=atOf("w"+w.n+"t"+i);
+    if(v>1e12) rows.push({at:v,wk:w.n,sub:t[0],title:t[1]});
+  }));
+  rows.sort((a,b)=>b.at-a.at);
+  const box=document.getElementById("recent"), list=document.getElementById("recentlist");
+  if(!rows.length){ box.hidden=true; return; }
+  box.hidden=false;
+  list.innerHTML=rows.slice(0,5).map(r=>
+    '<li><span class="when">'+ago(r.at)+'</span><span class="sub '+r.sub+'">'+TAGNAME[r.sub]+'</span>'+
+    '<span class="what">'+r.title+' <span style="color:var(--ink-3)">· კვირა '+r.wk+'</span></span></li>').join("");
+}
+
+let current = 0;
+const totalTasks = WEEKS.reduce((s,w)=>s+w.t.length,0);
+
+function doneIn(w){ return w.t.filter((_,i)=>isOn("w"+w.n+"t"+i)).length; }
+
+function renderRail(){
+  const rail=document.getElementById("rail");
+  rail.innerHTML="";
+  WEEKS.forEach((w,i)=>{
+    const done=doneIn(w), cls=done===w.t.length?"full":(done>0?"part":"");
+    const b=document.createElement("button");
+    b.type="button"; b.setAttribute("aria-current", i===current?"true":"false");
+    b.innerHTML='<span class="dot '+cls+'">'+(cls==="full"?"✓":w.n)+'</span>'+
+                '<span>კვირა '+w.n+'</span><span class="wk-date">'+w.d+'</span>';
+    b.onclick=()=>{ current=i; renderRail(); renderWeek(); };
+    rail.appendChild(b);
+  });
+}
+
+function renderWeek(){
+  const w=WEEKS[current];
+  document.getElementById("wk-eyebrow").textContent="კვირა "+w.n+" · "+w.d;
+  document.getElementById("wk-title").textContent=w.title;
+  const done=doneIn(w);
+  document.getElementById("wk-meta").innerHTML=
+    "<span>"+w.load+"</span><span><b>"+done+"</b> / "+w.t.length+" შესრულებული</span>";
+  document.getElementById("wk-goal").textContent=w.goal;
+  document.getElementById("wk-rhythm").innerHTML="<b>რიტმი:</b> "+w.rhythm;
+
+  const ul=document.getElementById("tasks"); ul.innerHTML="";
+  w.t.forEach((t,i)=>{
+    const id="w"+w.n+"t"+i, on=isOn(id);
+    const li=document.createElement("li"); if(on) li.className="on";
+    const cb=document.createElement("input");
+    cb.type="checkbox"; cb.id=id; cb.checked=on;
+    cb.onchange=()=>{
+      state[id]={v:cb.checked?1:0,t:Date.now()};
+      push();
+      renderRail(); renderWeek(); renderOverall(); renderRecent();
+    };
+    const d=document.createElement("div"); d.className="tbody";
+    d.innerHTML='<span class="tag '+t[0]+'">'+TAGNAME[t[0]]+'</span>'+
+      '<label for="'+id+'">'+t[1]+'</label>'+(t[2]?'<div class="note">'+t[2]+'</div>':'');
+    li.appendChild(cb); li.appendChild(d); ul.appendChild(li);
+  });
+}
+
+function renderOverall(){
+  const done=WEEKS.reduce((s,w)=>s+doneIn(w),0);
+  document.getElementById("obar").style.width=(done/totalTasks*100)+"%";
+  document.getElementById("opct").textContent=done+" / "+totalTasks+" შესრულებული";
+}
+
+/* Countdown. 2027 dates are not published yet — these mirror the 2026 calendar
+   (Georgian opens the session, English four days later, History mid-month).
+   Replace them the moment NAEC publishes 2027. */
+const EXAMS=[
+  {k:"ქართული",c:"g",d:new Date(2027,6,2,10,0,0)},
+  {k:"ინგლისური",c:"e",d:new Date(2027,6,6,10,0,0)},
+  {k:"ისტორია",c:"h",d:new Date(2027,6,13,10,0,0)}
+];
+function renderDays(){
+  const now=Date.now();
+  const ms=Math.max(0,EXAMS[0].d.getTime()-now);
+  const days=Math.floor(ms/864e5);
+  const hrs=Math.floor((ms%864e5)/36e5);
+  const mins=Math.floor((ms%36e5)/6e4);
+  document.getElementById("days").textContent=days;
+  document.getElementById("hrs").textContent=
+    ms>0 ? ("+ "+hrs+" სთ "+mins+" წთ · 2 ივლისი 2027, სავარაუდო") : "დღეს არის";
+  document.getElementById("subcount").innerHTML=EXAMS.map(e=>{
+    const d=Math.max(0,Math.floor((e.d.getTime()-now)/864e5));
+    return '<span><i class="'+e.c+'" style="font-style:normal">'+e.k+'</i><b>'+d+'</b>დღე</span>';
+  }).join("");
+}
+function tick(){ renderDays(); renderRecent(); stamp(); }
+document.addEventListener("visibilitychange",()=>{ if(!document.hidden) tick(); });
+window.addEventListener("focus",tick);
+
+// tabs
+const tabs=[["t-plan","v-plan"],["t-quiz","v-quiz"],["t-exam","v-exam"],["t-src","v-src"]];
+tabs.forEach(([tid,vid])=>{
+  document.getElementById(tid).onclick=()=>{
+    tabs.forEach(([t,v])=>{
+      const sel=t===tid;
+      document.getElementById(t).setAttribute("aria-selected",sel?"true":"false");
+      document.getElementById(v).hidden=!sel;
+    });
+  };
+});
+
+/* Materials for the first month — themes 1–4.
+   Chips go through ka.wikipedia's search, which lands on the article when the
+   title matches and offers the nearest ones when it doesn't. */
+const MONTH1=[
+ {wk:1,name:"ძველი აღმოსავლეთი და საქართველო",
+  read:"<b>დიოგენე, X კლასი — „ისტორია“ ნაწილი I</b>, პირველი თავები: შუამდინარეთი, ეგვიპტე, ასურეთი, აქემენიდები. მერე <b>„საქართველოს ისტორია“ ნაწილი I</b> — კოლხეთი და ქართლი. ორივე ერთ კვირაში: ჯერ მსოფლიო, მერე საქართველო იმავე პერიოდში.",
+  w:["შუამდინარეთი","შუმერი","ბაბილონი","ჰამურაბის კანონები","ძველი ეგვიპტე","ასურეთი","აქემენიდები","ურარტუ","კოლხეთის სამეფო","იბერიის სამეფო","ფარნავაზი","დიაოხი","ძველი ახლო აღმოსავლეთი"]},
+ {wk:2,name:"ძველი საბერძნეთი, რომი და საქართველო",
+  read:"იმავე წიგნების შემდეგი თავები. ყურადღება პოლისის მოწყობაზე და რომის სახელმწიფო წყობაზე — ეს ხშირად ხდება 37-ე კითხვის თემა. საქართველოს მხრიდან: ქართლის სამეფო და მისი ურთიერთობა რომთან.",
+  w:["ძველი საბერძნეთი","ათენი","სპარტა","ბერძნულ-სპარსული ომები","ალექსანდრე მაკედონელი","ელინიზმი","ძველი რომი","რომის რესპუბლიკა","რომის იმპერია","პომპეუსი","ქართლის სამეფო","ფარსმან ქველი"]},
+ {wk:3,name:"მსოფლიო და საქართველო IV–X საუკუნეებში",
+  read:"რომის დაცემა, ბიზანტია, ისლამის გაჩენა და არაბთა ექსპანსია — და პარალელურად ქართლის გაქრისტიანება, ვახტანგ გორგასალი, არაბთა ბატონობა, ტაო-კლარჯეთი. <b>ეს ის კვირაა, სადაც მსოფლიო და საქართველო პირველად უნდა დაინახო ერთ ხაზზე</b>, არა ცალ-ცალკე.",
+  w:["ბიზანტიის იმპერია","დიდი გადასახლება","მირიან III","წმინდა ნინო","ვახტანგ გორგასალი","იუსტინიანე I","მუჰამედი","არაბთა სახალიფო","თბილისის საამირო","ბაგრატიონები","ტაო-კლარჯეთი","გრიგოლ ხანძთელი","კარლოს დიდი"]},
+ {wk:4,name:"მსოფლიო და საქართველო XI–XV საუკუნეებში",
+  read:"ოქროს ხანა. ყველაზე ხშირად გამოსაცდელი პერიოდი — ამ კვირას ისტორიას მეტი დრო მიეცი. ჯვაროსნები და ფეოდალიზმი ერთ მხარეს, დავითი და თამარი მეორეს; ბოლოს მონღოლები და თემურ-ლენგი, რომლებიც ორივეს ცვლიან.",
+  w:["ჯვაროსნული ლაშქრობები","ფეოდალიზმი","ბაგრატ III","დავით აღმაშენებელი","დიდგორის ბრძოლა","თამარი","შამქორის ბრძოლა","ბასიანის ბრძოლა","გიორგი III","მონღოლთა იმპერია","ჩინგიზ-ხანი","თემურ-ლენგი","გიორგი V ბრწყინვალე","ასწლიანი ომი","ჟანა დარკი","ოსმალეთის იმპერია"]}
+];
+const wikiURL=t=>"https://ka.wikipedia.org/w/index.php?search="+encodeURIComponent(t);
+let theme=0;
+function renderThemes(){
+  document.getElementById("thpick").innerHTML=MONTH1.map((m,i)=>
+    '<button type="button" aria-pressed="'+(i===theme)+'" data-i="'+i+'">კვირა '+m.wk+
+    '<small>თემა '+m.wk+'</small></button>').join("");
+  document.getElementById("thpick").querySelectorAll("button").forEach(b=>{
+    b.onclick=()=>{ theme=Number(b.dataset.i); renderThemes(); };
+  });
+  const m=MONTH1[theme];
+  document.getElementById("thread").innerHTML="<b>"+m.name+"</b> — "+m.read;
+  document.getElementById("chips").innerHTML=m.w.map(t=>
+    '<a href="'+wikiURL(t)+'" target="_blank" rel="noopener">'+t+'</a>').join("");
+}
+document.getElementById("wsearch").onsubmit=e=>{
+  e.preventDefault();
+  const q=document.getElementById("wq").value.trim();
+  if(q) window.open(wikiURL(q),"_blank","noopener");
+};
+
+// quiz
+function renderQuiz(){
+  const box=document.getElementById("quiz"); box.innerHTML="";
+  QUIZ.forEach((q,i)=>{
+    const div=document.createElement("div"); div.className="q";
+    let html='<div class="qn">კითხვა '+(i+1)+'</div><p>'+q.q+'</p><div class="opts">';
+    q.o.forEach((o,j)=>{
+      html+='<label id="q'+i+'o'+j+'"><input type="radio" name="q'+i+'" value="'+j+'" id="q'+i+'r'+j+'"><span>'+o+'</span></label>';
+    });
+    html+='</div>';
+    div.innerHTML=html; box.appendChild(div);
+  });
+  box.querySelectorAll('input[type=radio]').forEach(r=>{
+    r.addEventListener("change",()=>{
+      answers[r.name.slice(1)]={v:Number(r.value),t:Date.now()};
+      push();
+    });
+  });
+  paintAnswers();
+}
+function paintAnswers(){
+  QUIZ.forEach((q,i)=>{
+    const v=ansOf(i);
+    if(v===undefined) return;
+    const el=document.getElementById("q"+i+"r"+v);
+    if(el) el.checked=true;
+  });
+}
+document.getElementById("qsubmit").onclick=()=>{
+  const weak={}, seen={};
+  QUIZ.forEach((q,i)=>{
+    seen[q.th]=(seen[q.th]||0)+1;
+    const sel=document.querySelector('input[name="q'+i+'"]:checked');
+    const got=sel?Number(sel.value):-1;
+    if(got!==q.a) weak[q.th]=(weak[q.th]||0)+1;
+    for(let j=0;j<q.o.length;j++){
+      const l=document.getElementById("q"+i+"o"+j);
+      l.classList.remove("right","wrong");
+      if(j===q.a) l.classList.add("right");
+      else if(j===got) l.classList.add("wrong");
+    }
+  });
+  const order=Object.keys(seen).map(Number).sort((a,b)=>a-b);
+  let items="";
+  order.forEach(th=>{
+    const bad=weak[th]||0;
+    items+='<li class="'+(bad?"weak":"ok")+'"><span class="mark">'+(bad?"გასამაგრებელი":"კარგად")+
+      '</span><span>'+THEMES[th]+'</span></li>';
+  });
+  const weakCount=Object.keys(weak).length;
+  document.getElementById("result").innerHTML=
+    '<div class="rescard"><h3>რა გამოჩნდა</h3><p style="color:var(--ink-2);font-size:14px;margin:0;max-width:62ch">'+
+    (weakCount===0
+      ? "ყველა თემაზე სწორად უპასუხე. გეგმა მაინც თავიდან იწყება — ეს ტესტი მხოლოდ საწყისი წერტილია, არა შეფასება."
+      : "ქვემოთ ნაჩვენებია, რომელი თემები უნდა გავიაროთ ყურადღებით. სწორი პასუხები კითხვებზე მწვანედაა მონიშნული — გადახედე მათ, სადაც შეცდომა იყო.")+
+    '</p><ul class="reslist">'+items+'</ul></div>';
+  document.getElementById("result").hidden=false;
+  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
+};
+document.getElementById("qreset").onclick=()=>{
+  answers={}; push();
+  renderQuiz();
+  document.getElementById("result").hidden=true;
+  document.getElementById("quiz").scrollIntoView({behavior:"smooth",block:"start"});
+};
+
+renderRail(); renderWeek(); renderOverall(); renderDays(); renderQuiz(); renderRecent(); renderThemes();
+stamp(); renderShare();
+if(BID){ setSync("","ვუკავშირდები…"); pull(); }
+else setSync("local","საერთო ბმული ჯერ არ არის — ქვემოთ დააჭირე „საერთო ბმულის შექმნა“.");
+setInterval(pull,8000);
+setInterval(tick,30000);
+document.addEventListener("visibilitychange",()=>{ if(!document.hidden) pull(); });
+window.addEventListener("focus",pull);
+</script>
+
+</body>
+</html>
